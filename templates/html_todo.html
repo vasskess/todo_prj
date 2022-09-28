@@ -1,0 +1,18 @@
+<h1>To do list</h1>
+
+<form method="POST" action="">                       {# This will send us to views.py if we click Submit #}
+    {% csrf_token %}                                 {# This will let django know we can accept that POST method #}
+    {{ form }}
+    <input type="submit" name="Create Task">         {# This is syntax for Submit button #}
+</form>
+
+{% for task in tasks %}                              {# tasks come form context in the views.py #}
+    <div>
+    <p>
+        {{ task.title }}                                        {# This is what USER see on the page #}
+        <button><a href="{% url 'update_task' task.id %}">Update</a> </button>  {# task.id will create a link to the obj with that id/pk in our Model/Table #}
+        <button><a href="{% url 'delete_task' task.id %}">Delete</a></button>
+
+    </p>
+    </div>
+{% endfor %}

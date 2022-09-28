@@ -1,0 +1,9 @@
+<h1>Delete Item</h1>
+
+<p> Are you sure you want to delete this {{ item.title }}?</p>   {# This will create a question with the task.titel #}
+<button><a href="{%  url 'todo_page' %}">Cancel</a></button>                      {# If Cancle clicked, redirect to home page #}
+
+<form method="POST" action="">                  {# action is empty couse we dont redirect to new link or function #}
+    {% csrf_token %}
+    <input type="submit" value = "Delete" name="Confirm">
+</form>
