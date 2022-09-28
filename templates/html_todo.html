@@ -10,7 +10,7 @@
     <div>
     <p>
         {{ task.title }}                                        {# This is what USER see on the page #}
-        <button><a href="{% url 'update_task' task.id %}">Update</a> </button>  {# task.id will create a link to the obj with that id/pk in our Model/Table #}
+        <a href="{% url 'update_task' task.id %}">Update</a>  {# task.id will create a link to the obj with that id/pk in our Model/Table #}
         <button><a href="{% url 'delete_task' task.id %}">Delete</a></button>
 
     </p>
