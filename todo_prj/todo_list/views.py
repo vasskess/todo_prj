@@ -9,7 +9,7 @@ from todo_prj.todo_list.models import Task
 
 def todo_page(request):
     tasks = Task.objects.all()                           # Task is the Model/Table name
-    form = TodoForm()                                    # Here we call TodoForm so we can pass it to context
+    form = TodoForm()                                    # Here we call TodoForm, so we can pass it to context
     context = {"tasks": tasks, "form": form}             # This will be used in html template
 
     # This is Create from CRUD
@@ -33,7 +33,7 @@ def view_task(request, pk):
 
 def update_task(request, pk):                            # This will trow the primary key for the task we want to update
     task = Task.objects.get(id=pk)                       # This is syntax to take a specific object from our Model/Table by id/pk
-    form = TodoForm(instance=task)                       # form will be a instance of the obj we took by its id/pk in Model/Table
+    form = TodoForm(instance=task)                       # form will be an instance of the obj we took by its id/pk in Model/Table
     context = {"form": form}
 
     # This is Update from CRUD
