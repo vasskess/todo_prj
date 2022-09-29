@@ -24,6 +24,8 @@ def todo_page(request):
 def view_task(request, pk):
     task = Task.objects.get(id=pk)
     context = {"task": task}
+
+    # This is Read from CRUD
     if request.method == "POST":
         return redirect("todo_page")
     return render(request, "html_view.html", context)
