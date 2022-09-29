@@ -21,6 +21,14 @@ def todo_page(request):
     return render(request, "html_todo.html", context)
 
 
+def view_task(request, pk):
+    task = Task.objects.get(id=pk)
+    context = {"task": task}
+    if request.method == "POST":
+        return redirect("todo_page")
+    return render(request, "html_view.html", context)
+
+
 def update_task(request, pk):                            # This will trow the primary key for the task we want to update
     task = Task.objects.get(id=pk)                       # This is syntax to take a specific object from our Model/Table by id/pk
     form = TodoForm(instance=task)                       # form will be a instance of the obj we took by its id/pk in Model/Table
@@ -37,7 +45,6 @@ def update_task(request, pk):                            # This will trow the pr
 
 def delete_task(request, pk):
     item = Task.objects.get(id=pk)
-    form = TodoForm(instance=item)
     context = {"item": item}
 
     #This is Delete from CRUD

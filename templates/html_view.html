@@ -1,0 +1,7 @@
+<h1>View Task</h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+        {{ task.created }}
+    <input type="submit" value = "Ok" name="Update Task">
+</form>
