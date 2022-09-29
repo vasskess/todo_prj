@@ -1,19 +1,65 @@
-<h1>To do list</h1>
+<style>
+    body {
+        background-color: #638CB8;
+    }
 
-<form method="POST" action="">                       {# This will send us to views.py if we click Submit #}
-    {% csrf_token %}                                 {# This will let django know we can accept that POST method #}
-    {{ form }}
-    <input type="submit" name="Create Task">         {# This is syntax for Submit button #}
-</form>
+    input {
+        width: 100%;
+        padding: 12px 20px;
 
-{% for task in tasks %}                              {# tasks come form context in the views.py #}
-    <div>
-    <p>
-        {{ task.title }}
-        <button><a href="{% url 'view_task' task.id %}">View</a> </button>  {# This is what USER see on the page #}
-        <button><a href="{% url 'update_task' task.id %}">Update</a> </button>  {# task.id will create a link to the obj with that id/pk in our Model/Table #}
-        <button><a href="{% url 'delete_task' task.id %}">Delete</a></button>
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
 
-    </p>
-    </div>
-{% endfor %}
+    input::placeholder {
+        color: #d3d3d3;
+    }
+
+    .center-column {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #24ff42;
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .btn-submit {
+        background-color: gold;
+    }
+
+    .btn-info {
+        color: #0905ff;
+    }
+
+    .btn-update {
+        color: green;
+    }
+
+    .btn-delete {
+        color: #ff0716;
+    }
+
+</style>
+
+<div class="center-column">
+    <form method="POST" action="">                       {# This will send us to views.py if we click Submit #}
+        {% csrf_token %}                                 {# This will let django know we can accept that POST method #}
+        {{ form }}
+        <input class="btn btn-submit" type="submit" name="Create Task">    {# This is syntax for Submit button #}
+    </form>
+
+    {% for task in tasks %}                                                {# tasks come form context in the views.py #}
+        <div>
+            <p>
+                {{ task.title }}
+                <button><a class="btn btn-info" href="{% url 'view_task' task.id %}">View</a></button>
+                {# This is what USER see on the page #}
+                <button><a class="btn btn-update" href="{% url 'update_task' task.id %}">Update</a></button>
+                {# task.id will create a link to the obj with that id/pk in our Model/Table #}
+                <button><a class="btn btn-delete" href="{% url 'delete_task' task.id %}">Delete</a></button>
+
+            </p>
+        </div>
+    {% endfor %}
+</div>

@@ -1,7 +1,28 @@
-<h1>View Task</h1>
+<style>
+    body {
+        background-color: #ff7018;
+    }
 
-<form method="POST" action="">
-    {% csrf_token %}
+    .center-column {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #2dfff5;
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .btn-ok {
+        color: #1eff20;
+        background: black;
+    }
+</style>
+<div class="center-column">
+    <h1>View Task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
         {{ task.created }}
-    <input type="submit" value = "Ok" name="Update Task">
-</form>
+        <input class="btn btn-ok" type="submit" value="Ok" name="Update Task">
+    </form>
+</div>
