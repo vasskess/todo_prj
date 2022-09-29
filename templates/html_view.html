@@ -18,11 +18,11 @@
     }
 </style>
 <div class="center-column">
-    <h1>View Task</h1>
+    <h1>{{ task.title }}</h1>
 
     <form method="POST" action="">
         {% csrf_token %}
-        {{ task.created }}
+         Created on {{ task.created }}
         <input class="btn btn-ok" type="submit" value="Ok" name="Update Task">
     </form>
 </div>
